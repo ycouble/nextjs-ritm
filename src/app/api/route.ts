@@ -1,12 +1,12 @@
-import { Hook as RequireHook } from "require-in-the-middle";
+console.log("before import OpenAI");
+// import OpenAI from "openai";
+console.log("after import OpenAI");
 
-const requireHook = new RequireHook(function (exports, name, basedir) {
-  console.log("Require Hooked", name);
-  return exports;
-});
-
+import { foo } from "./lib";
 export async function GET(request: Request) {
-  const openai = (await import("openai")).default;
+  // new OpenAI();
+
+  console.log("foo", foo);
 
   return new Response("Hello, Next.js!", {
     status: 200,
